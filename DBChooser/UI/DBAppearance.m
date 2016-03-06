@@ -37,11 +37,11 @@ static CGFloat BackBarButtonCapHeight = 0;
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
      setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_button_landscape"] resizableImageWithCapInsets:button_insets]
      forState:UIControlStateNormal
-     barMetrics:UIBarMetricsLandscapePhone];
+     barMetrics:UIBarMetricsCompact];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
      setBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_button_landscape_pressed"] resizableImageWithCapInsets:button_insets]
      forState:UIControlStateHighlighted
-     barMetrics:UIBarMetricsLandscapePhone];
+     barMetrics:UIBarMetricsCompact];
     
     UIEdgeInsets back_insets = UIEdgeInsetsMake(BackBarButtonCapHeight, BackBarButtonLeftCap, BackBarButtonCapHeight, BackBarButtonRightCap);
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
@@ -55,16 +55,20 @@ static CGFloat BackBarButtonCapHeight = 0;
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
      setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_button_landscape"] resizableImageWithCapInsets:back_insets]
      forState:UIControlStateNormal
-     barMetrics:UIBarMetricsLandscapePhone];
+     barMetrics:UIBarMetricsCompact];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], cls, nil]
      setBackButtonBackgroundImage:[[UIImage imageNamed:@"DBChooser.bundle/blue_back_button_landscape_pressed"] resizableImageWithCapInsets:back_insets]
      forState:UIControlStateHighlighted
-     barMetrics:UIBarMetricsLandscapePhone];
+     barMetrics:UIBarMetricsCompact];
+    
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.9];
+    shadow.shadowOffset = CGSizeMake(0, -0.5);
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-                               UITextAttributeTextColor : [UIColor whiteColor],
-                         UITextAttributeTextShadowColor : [[UIColor blackColor] colorWithAlphaComponent:0.9],
-                        UITextAttributeTextShadowOffset : [NSValue valueWithCGSize:CGSizeMake(0, -0.5)] }];
+                                                           NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                           NSShadowAttributeName : shadow
+                                                           }];
 }
 
 + (UIColor *)dropboxBlue {
